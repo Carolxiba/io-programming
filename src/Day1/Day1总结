@@ -1,0 +1,62 @@
+File
+    1.对象创建方法：
+        a.File(String pathName)
+        b.File(String parent, String child)
+        c.File(File parent, String child)
+
+    File可以代表文件，也可以代表文件夹
+    File封装的对象只是一个路径名，可以存在，也可不存在
+
+    绝对，相对路径：
+        1.绝对路径：
+            从盘符开始
+
+        2.相对路径：
+            不带盘符，默认从当前工程下的目录寻找文件
+
+    2.常用方法
+        a.boolean exists()              判断当前文件路径是否存在
+        b.boolean isFile()              判断指代对象是否是文件
+        c.boolean isDirectory()         判断指代对象是否是文件夹
+        d.String getName()             获取文件名称
+        e.long length()              返回文件的字节个数
+        f.long lastModified()        获取文件的最后修改时间
+        g.String getPath()             获取创建对象时使用的路径
+        h.String getAbsolutePath()     获取绝对路径
+
+        创建，删除
+        a.boolean createNewFile()       创建文件
+        b.boolean mkdir()               创建文件夹
+        c.boolean mkdirs()              用于创建多个文件夹
+        d.boolean delete()              删除文件，不能删除非空文件夹
+
+        遍历（只能遍历一级文件）
+        a.String[] list()       获取当前文件目录下所有的“一级文件名称”
+        b.File[] listFiles()    获取当前目录下的所有的“一级文件对象”到一个文件对象数组中去返回
+
+字符集：
+    1.ASCII:
+        包含英文，符号
+        标准ASC，使用1个字节存储一个字符，首尾是0，总共表示128字符
+    2.GBK(汉字）
+        一个中文字符编码成2个字节形式存储
+        GBK兼容ASCII
+    3.Unicode字符集（万国码)
+        容纳世界上所有文字，符号的字符集
+        但是空间占用太大，1个字符需要4个字节存储
+
+        utf-8:
+            Unicode的一种编码方案
+            分四个长度区：1个，2个，3个，4个
+            英文，符号占1个字节
+            汉字占3个字节
+
+    编码，解码都要用统一字符集
+    英文，数字怎么都不会乱码，兼容ASCII
+
+    编码，解码api:
+        byte[] getBytes()
+        byte[] getBytes(String charset)
+
+        String(byte[] bytes)
+        String(byte[] bytes, String charset)
