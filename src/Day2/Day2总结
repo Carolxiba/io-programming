@@ -1,0 +1,58 @@
+IO流概述：
+    I:input，称为输入流：负责把数据读到内存中去
+    O:output,称为输出流：负责写数据出去
+
+    按方向分：
+        输入流
+
+        输出流
+
+    按数据最小单位：
+        字节流：
+            适合操作所有类型文件
+        字符流：
+            只适合操作纯文本文件
+
+    IO流总体分为：
+        （输入输出都是以内存为基准）
+        字节输入流，字节输出流，字符输入流，字符输出流
+
+IO流体系：
+    java.io包下：
+        字节输入流：
+            抽象类：InputStream
+            实现类：FileInputStream
+                对象创建方法：
+                    public FileInputStream(String path)
+                成员方法：
+                    public int read()  //读取一个字节，返回读取的字节值
+                    public int read(byte[] bytes)   //读取文件，将bytes填满一遍，返回读取的字节数
+                    public byte[] readAllBytes()   //将整个文件读取，返回一个字节数组
+
+        字节输出流：
+            抽象类：OutputStream
+            实现类：FileOutputStream
+                对象创建方法：
+                    public FileOutputStream(String path, //boolean append)  //append代表是否追加，可选
+                成员方法：
+                    public void write(int a)    //将int类型的a转换成字节存入
+                    public void write(byte[] bytes, //int pos, //int len)      //将字符数组写入，pos代表偏移量，len代表写入的长度
+
+        字符输入流：
+            抽象类：Reader
+            实现类：FileReader
+
+        字符输出流：
+            抽象类：Writer
+            实现类：FileWriter
+
+
+        ps:使用流后要关闭
+
+        释放资源的方案：
+            1.try-catch-finally:
+                在finally代码块中释放资源，因为无论程序怎么执行，finally中的代码一定会执行
+
+
+            2.try-with-resource:
+                不需要finally代码块，流对象放到try()的小括号中
